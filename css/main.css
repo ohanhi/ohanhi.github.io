@@ -53,33 +53,57 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+html {
+    font-size: 14px;
+    transition: font-size 0.2s ease;
+}
+
+@media only screen and (min-width: 480px) {
+    html {
+        font-size: 20px;
+    }
+}
 
 body {
     background: #eee;
     color: #666;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Merriweather', serif;
     text-align: center;
-    padding: 0 2em 2em;
-    text-shadow: 0 0 8px rgba(255,255,255, 0.9);
+    line-height: 1.8;
 }
 
-#page-title {
+.contain {
+    width: 100%;
+    max-width: 30rem;
+    padding: 0 2em 2em;
+    margin: auto;
+}
+
+.page-title {
     font-size: 3em;
     font-weight: 300;
     margin: 2em 0;
     line-height: 1;
 }
 
+.profile-pic {
+    width: 80vw;
+    max-width: 20em;
+    border: 0.2em solid white;
+    border-radius: 100em;
+    box-shadow: 0 0.1em 1em rgba(0,0,0, 0.3);
+}
+
 a {
-    color: #303F9F;
-    /*text-decoration: none;*/
-    transition: 0.3s ease;
+    color: #4A148C;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 a:visited {
-    color: #4A148C;
+    color: #805aae;
 }
 a:hover {
-    color: #3F51B5;
+    text-shadow: 0 1px 2px rgba(128,90,178, 0.6);
 }
 
 ul.no-bullets {
@@ -91,27 +115,35 @@ ul.no-bullets li {
     padding: 0.5em 0;
 }
 
-
-
-
-
-
-
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-
+.portfolio-entry {
+    margin: 0 auto 2em;
+    width: 80%;
 }
 
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-
+figcaption {
+    margin-top: 0.5em;
 }
+
+img {
+    max-width: 100%;
+}
+
+
+footer {
+    background-color: #250a46;
+    color: #ddd;
+    padding: 2em;
+    box-shadow: 0 -5px 15px rgba(128,90,178, 0.6);
+}
+
+footer a {
+    color: #ddd;
+}
+
+footer a:visited {
+    color: #ddd;
+}
+
 
 /* ==========================================================================
    Helper classes
