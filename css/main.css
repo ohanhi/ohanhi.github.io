@@ -66,7 +66,7 @@ html {
 
 body {
     background: #eee;
-    color: #666;
+    color: #464646;
     font-family: 'Merriweather', serif;
     text-align: center;
     line-height: 1.8;
@@ -130,10 +130,10 @@ img {
 
 
 footer {
-    background-color: #250a46;
+    background-color: #363636;
     color: #ddd;
     padding: 2em;
-    box-shadow: 0 -5px 15px rgba(128,90,178, 0.6);
+    box-shadow: 0 -2px 10px rgba(100,100,100, 0.3);
 }
 
 footer a {
