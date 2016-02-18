@@ -1,0 +1,12 @@
+title: "Ossi Hanhinen"
+author: "Ossi Hanhinen"
+description: "Frontend expert"
+more: "read more"
+url: "http://ohanhi.com"
+permalink: none
+
+excerpt_separator: "\n\n\n"
+defaults: [{scope: {path: ""}, values: {layout: "default"}}, {scope: {path: "", type: "posts"}, values: {comments: true}}]
+gems:
+  - octopress-autoprefixer
+  - jekyll-feed
