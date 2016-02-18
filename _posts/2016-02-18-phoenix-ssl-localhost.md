@@ -29,16 +29,16 @@ Put them in a directory called `priv/keys/`.
 In your `config/dev.exs` file:
 
 {% highlight elixir %}
-  config :phoenix_oauth2_mock_server, PhoenixOauth2MockServer.Endpoint,
-    http: [port: 4000],
-    https: [port: 4443,
-            otp_app: :phoenix_oauth2_mock_server,
-            keyfile: "priv/key/localhost.key",
-            certfile: "priv/key/localhost.cert"],
-    debug_errors: true,
-    code_reloader: true,
-    check_origin: false,
-    watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
+config :phoenix_oauth2_mock_server, PhoenixOauth2MockServer.Endpoint,
+  http: [port: 4000],
+  https: [port: 4443,
+          otp_app: :phoenix_oauth2_mock_server,
+          keyfile: "priv/key/localhost.key",
+          certfile: "priv/key/localhost.cert"],
+  debug_errors: true,
+  code_reloader: true,
+  check_origin: false,
+  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin"]]
 {% endhighlight %}
 
 **Done!**
