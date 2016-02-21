@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Ossi Hanhinen{% if page.title %} - {{ page.title }}{% endif %}</title>
-        <meta name="description" content="Frontend Expert">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% feed_meta %}
-        <link href='https://fonts.googleapis.com/css?family=Merriweather:400,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/highlight.css">
-        <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/main.css">
-    </head>
-    <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>{% if page.title %}{{ page.title }} - {% endif %}Ossi Hanhinen</title>
+  <meta name="description" content="{{ page.title }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% feed_meta %}
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300|Crimson+Text' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/highlight.css">
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
 
-        <section class="contain post">
-            <a href="/" class="back-link">&laquo; Home</a>
-            <h1 class="post-title">{{ page.title }}</h1>
-            <header class="post-header">
-                <img class="profile-pic" src="img/profile.jpg" alt="">
-                <h3 class="author">
-                    <span>Ossi Hanhinen</span>
-                    <a href="https://twitter.com/ohanhi">@ohanhi</a>
-                </h3>
-            </header>
-            {{ content }}
-        </section>
-        <footer>
-            <a href="https://twitter.com/ohanhi">Twitter</a>
-            &ndash;
-            <a href="https://github.com/ohanhi">GitHub</a>
-        </footer>
+  <section class="contain post">
+    <a href="/" class="back-link">&laquo; Home</a>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <header class="post-header">
+      <img class="profile-pic" src="img/profile.jpg" alt="">
+      <h3 class="author">
+        <span>Ossi Hanhinen</span>
+        <a href="https://twitter.com/ohanhi">@ohanhi</a>
+      </h3>
+    </header>
+    {{ content }}
+  </section>
+  <footer>
+    <a href="https://twitter.com/ohanhi">Twitter</a>
+    &ndash;
+    <a href="https://github.com/ohanhi">GitHub</a>
+  </footer>
 
-        <script src="js/main.js"></script>
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-58943555-1');ga('send','pageview');
-        </script>
-    </body>
-</html>
+  <script src="js/main.js"></script>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+  (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='https://www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-58943555-1');ga('send','pageview');
+    </script>
+  </body>
+  </html>
