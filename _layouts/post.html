@@ -9,7 +9,8 @@
   {% feed_meta %}
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300|Crimson+Text' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="css/highlight.css">
+  <link rel="stylesheet" href="/lib/highlight/tomorrow.css">
+  <script src="/lib/highlight/highlight.pack.js"></script>
   <link rel="stylesheet" href="css/normalize.min.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
@@ -25,6 +26,7 @@
         <a href="https://twitter.com/ohanhi">@ohanhi</a>
       </h3>
     </header>
+    <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
     {{ content }}
   </section>
   <footer>
@@ -35,6 +37,8 @@
 
   <script src="js/main.js"></script>
   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script>
+  hljs.initHighlighting();</script>
   <script>
   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
