@@ -86,6 +86,29 @@ To bridge the gap between the Elm generated VTree and React Native, there are tw
 
 Now the "Elm Native" is something you would generally try to avoid when coding Elm, since there are no guarantees of safety. Also, the way they work is supposed to change in the very near future. But just to clear it up, from the Elm point of view, _native_ refers to JavaScript, which is what the Elm runtime runs on. From the React Native point of view however, _native_ is the Objective-C/Java code that runs on a mobile device. This naming thing is also the reason the project is called **Elm Native UI** and not simply Elm Native.
 
+How the event listeners work under the hood is a bit funky at the moment. The Elm Native module utilizes handler IDs to keep track of them and pass events to the Elm runtime. That is why the `on` function returns an `EventHandlerRef`, which is essentially an integer.
+
+{%highlight elm%}
+on : Json.Decode.Decoder a -> (a -> Signal.Message) -> EventHandlerRef
+on decoder toMessage =
+    Native.ReactNative.on decoder toMessage
+{%endhighlight%}
+
+We are looking to improve this in the future.
+
+
+## Did it work out?
+
+Yes it did. There are still big things to overcome, such as the [Navigator](https://facebook.github.io/react-native/docs/navigator.html#content) (though that should change soon) and event handler thing. But all in all it feels like Elm Native UI could actually be a thing somewhere down the line.
+
+A resounding thank you goes to all the [contributors](https://github.com/elm-native-ui/elm-native-ui/graphs/contributors)!
+
+Here's an internetsy representation of what we've accomplished thus far: a GIF.
+
+![](/img/elm-native-ui-capture.gif)
+
+The repository is open source on GitHub: [Elm Native UI](https://github.com/elm-native-ui/elm-native-ui/)
+
 
 ## What's next
 
