@@ -17,11 +17,9 @@ We wanted to start with something that would be simple enough, but would have at
 
 In the end, we opted for the traditional example of increment and decrement buttons and a counter to display the current value. This would demonstrate that both of the vital parts, the output and the input, work as intended.
 
-![](/img/rn-elm.png)
+![](/img/rn-elm-2.png)
 
-This beautiful* diagram shows how the whole thing works. Ideally, the green Elm app is what the developer should work on. React Native works as a "backend" of sorts, relaying messages to and from the native app side to the Elm side.
-
-<small>\* If you know of a free/low-cost tool that produces more human graphics of this sort, please [contact me](https://twitter.com/ohanhi)!</small>
+This diagram shows how the whole thing works. Ideally, the Elm application is the only thing a developer needs to work on. React Native works as a "backend" of sorts, relaying messages to and from the native app side to the Elm side.
 
 
 ## Overcoming the Elm border control
