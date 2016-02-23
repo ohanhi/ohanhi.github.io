@@ -7,8 +7,8 @@ We were at the [Reactive 2015](https://reactive2015.com/) conference in Bratisla
 
 Me and [André](http://staltz.com/) wanted to prove it was possible to write a React Native app using Elm. A weekend of hacking lead to [Elm Native UI](https://github.com/elm-native-ui/elm-native-ui) being born.
 
-[![](/img/elm-native.png)](https://github.com/elm-native-ui/elm-native-ui)
-<small class="caption">Elm Native UI logo by [Paul Young](https://paulyoung.wordpress.com/)</small>
+[![](/img/elm-native-dribbble.png)](https://github.com/elm-native-ui/elm-native-ui)
+<small class="caption">Elm Native UI [logo](https://dribbble.com/shots/2383347-Elm-Native-logo) by [Paul Young](https://paulyoung.wordpress.com/)</small>
 
 
 ## What we wanted to achieve
