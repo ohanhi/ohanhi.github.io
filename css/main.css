@@ -77,6 +77,13 @@ img {
   max-width: 100%;
 }
 
+blockquote {
+  color: #666;
+  border-left: 2px solid #999;
+  padding: 0.5rem 0 0.5rem 1rem;
+  margin: 1em 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Crimson Text', serif;
   font-weight: normal;

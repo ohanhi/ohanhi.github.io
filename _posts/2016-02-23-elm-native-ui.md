@@ -3,6 +3,9 @@ layout: post
 title: "Elm Native UI: Writing a React Native app in Elm"
 ---
 
+> **Edited Feb 24, 2016**<br>
+> Update on port-related parts: new simpler API and a note on future developments.
+
 We were at the [Reactive 2015](https://reactive2015.com/) conference in Bratislava in November. A lot of people I talked with were interested in Elm, and many asked whether it could be used with a) Node and b) React Native. I knew there was progress on the Node front, but at least [Richard Feldman](https://twitter.com/rtfeldman) hadn't heard anything about React Native being experimented with.
 
 Me and [André](http://staltz.com/) wanted to prove it was possible to write a React Native app using Elm. A weekend of hacking lead to [Elm Native UI](https://github.com/elm-native-ui/elm-native-ui) being born.
@@ -37,13 +40,15 @@ type VTree
 To pass the thing to the React Native side, we decided to go with plain JSON values, since they exhibit all the qualities we needed and are allowed through ports:
 
 {%highlight elm%}
-port vtreeOutput : Signal Json.Encode.Value
-port vtreeOutput =
-  Signal.map2 (,) model init
-  |> Signal.map fst
-  |> Signal.map view
-  |> Signal.map RN.encode
+-- "main"
+port viewTree : Signal Json.Encode.Value
+port viewTree =
+  NativeApp.start { model = model, view = view, update = update, init = init }
 {%endhighlight%}
+
+> **Note:** I updated the code sample above to reflect current `master` branch.
+>
+> Also, Evan Czaplicki, the creator of Elm, contacted me after this post was first published. He said "Supporting a new platform is something that can get special help from the language", so I am hopeful this will become even nicer in the future!
 
 
 ## Ping back
