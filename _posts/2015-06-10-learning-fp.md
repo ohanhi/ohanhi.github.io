@@ -104,6 +104,7 @@ update dt keys ship =
 Now if I could just call `update` 30 times per second, giving it the time difference from last update, the keys pressed and the previous incarnation of `ship`, I'd have a nice little game model going on. Except of course I couldn't see anything since there is no render... but in principle.
 
 So let's just quickly recap what's happened thus far.
+
 - Type aliases define data models
 - All data is immutable
 - Type annotations clarify the goal of the function
@@ -119,7 +120,7 @@ I've covered quite a lot of ground already with my game. There is a model and al
 
 This is the point where some mind-bending realizations need to happen. In the object oriented programming approach, the state of a program is "scattered" among several entities. The `Ship` in this case would be a class and `myShip` would be an instance of that class. At any given time during the program, `myShip` would know the value of its position and other attributes. Not so in functional programming. At any given time during the program, `initShip` will simply be the same thing it was in the beginning. To get the relevant current state of things, I need to look at what has happened in the past. I need to use those happenings as input to the functions I've defined and only then I get the `Ship` as it currently should be. This quite the departure from what I am used to, so I will break down the process.
 
-#### The first step
+### The first step
 
 In the beginning there was `initShip` with its dull `0, 0, False` values. There were also functions that could transform a `Ship` into another `Ship`. In particular, there was the `update` function, which would take input and a ship to get an updated ship. I will repeat the function here, so you don't need to scroll.
 
@@ -164,7 +165,7 @@ This gives us
 All right! So this works! My ship is `shooting` because the up button is pressed, and it has a negative `velocity` to account for the left button being pressed. Notice how the `position` stayed the same, still. This is because I defined the update sequence to first apply physics and then update the other properties. `initShip`'s velocity was 0, so applying physics didn't move it.
 
 
-#### Signals
+### Signals
 
 At this point I'd like you to take your time and read [Signals on Elm-lang](http://elm-lang.org/guide/reactivity#signals), and if you're interested, maybe even watch a video or two about the Elm Signals. I am going to assume you know what Signals are from now on.
 
@@ -176,6 +177,7 @@ So my ship can move one step forward, but that's not terribly exciting. I want i
 I have actually constructed my models and logic in a great way, because there happens to be a ready-made signal called [`fps n`](http://package.elm-lang.org/packages/elm-lang/core/2.0.1/Time#fps), which updates `n` times per second. It tells the time difference from the last update. This is the `dt` I need. Furthermore, there is another built-in signal called [`Keyboard.arrows`](http://package.elm-lang.org/packages/elm-lang/core/2.0.1/Keyboard#arrows), which holds the current arrow buttons in exactly the same way I defined `Keys`. This gets updated whenever there is a change.
 
 Okay, in order to get an interesting input signal, I will have to combine these two built-in signals so that "on each update of `fps`, check the status of `Keyboard.arrows` and report both of them".
+
 - "Both of them" sounds like a tuple, `(Float, Keys)`
 - "on each update" sounds like [`Signal.sampleOn`](http://package.elm-lang.org/packages/elm-lang/core/2.0.1/Signal#sampleOn)
 
@@ -241,6 +243,7 @@ I now have a fully functional model, updates and everything, for my game, in a t
 
 
 Again, a quick recap of what happened here:
+
 - A signal is a function of time
   - For each moment in time, there exists a pure value of a signal
 - `Signal.foldp` reduces the value in the same sense as `List.foldl`
@@ -250,6 +253,7 @@ Again, a quick recap of what happened here:
 ## Part III. The learnings
 
 There was a lot to learn in this endeavor for me. I hope you, too, have learned something while reading this. My personal (subjective) findings were:
+
 - Types are actually pretty nice - and useful
 - Immutability and restricting global state didn't feel that strange after all
 - Functional programming in Elm is very terse and very readable
