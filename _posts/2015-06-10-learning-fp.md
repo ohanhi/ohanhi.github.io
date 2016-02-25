@@ -214,11 +214,13 @@ main = Signal.map show (Signal.foldp update initShip inputSignal)
 ```
 
 A couple of things are happening there:
+
 1. I use `Signal.foldp` to apply `update` with the signal, starting with `initShip`.
 2. Folding still results in a signal, since it will continue updating the "folded state".
 3. I use `Signal.map` to map the current value of my "folded state" to `show`.
 
 Only this results in a crapton of type errors, the bottom-most of which is the following.
+
     Type mismatch between the following types on line 49, column 38 to 44:
 
            Temp9243.Ship -> Temp9243.Ship
@@ -237,7 +239,7 @@ update (dt, keys) ship =
   -- the same as before
 ```
 
-... and it works! :tada:
+... and it works! 🎉
 
 I now have a fully functional model, updates and everything, for my game, in a total of 50 lines of code! The whole thing can be seen here: [game.elm](#file-game-elm). To see it in action, you can copy-paste the code into the [Try Elm](http://elm-lang.org/try) interactive editor (in case nothing happens, click Compile and then the right-hand side of the screen, then press the arrow buttons).
 
