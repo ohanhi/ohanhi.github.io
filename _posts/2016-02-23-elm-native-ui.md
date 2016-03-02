@@ -117,6 +117,5 @@ The repository is open source on GitHub: [Elm Native UI](https://github.com/elm-
 
 I will write another post later on about the future of Elm Native UI. There are some interesting developments, as with [React Native 0.21](https://github.com/facebook/react-native/releases/tag/v0.21.0-rc) the much more reactive NavigationExperimental is becoming a reality.
 
----
 
 **Closes [#2](https://github.com/elm-native-ui/elm-native-ui/issues/2)**
