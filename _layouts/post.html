@@ -27,6 +27,25 @@
       </h3>
     </header>
     <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
+
+    {% if page.reasons %}
+    <h3>Read this to:</h3>
+    <ul class="post-reasons">
+      {% for reason in page.reasons %}
+      <li>{{ reason | markdownify }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if page.prereqs %}
+    <h3>Prerequisites:</h3>
+    <ul class="post-prereqs">
+      {% for req in page.prereqs %}
+      <li>{{ req | markdownify }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
     {{ content }}
   </section>
   <footer>
