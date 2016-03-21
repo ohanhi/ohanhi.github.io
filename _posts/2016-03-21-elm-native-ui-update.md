@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Elm Native UI: Visions of the future"
+title: "Elm Native UI: Visions of the future of Elm + React Native"
 ---
 
 > [Elm Native UI](https://github.com/elm-native-ui/elm-native-ui) aims to let people build mobile apps in Elm using React Native.
