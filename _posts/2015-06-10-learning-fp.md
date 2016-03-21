@@ -38,24 +38,24 @@ Okay, let's switch the point of view now and revise from the ship's perspective.
 
 This basically gave me a definition of what the `Ship` should look like as a data structure, or a [Record](http://elm-lang.org/guide/core-language#records) in Elm terminology. Although optional, I like to define these things as type aliases, which will allow the use of `Ship` in type annotations.
 
-```elm
+{%highlight elm%}
 type alias Ship =
   { position : Float  -- just 1 degree of freedom (left-right)
   , velocity : Float  -- either 0, 1 or -1
   , shooting : Bool
   }
-```
+{%endhighlight%}
 
 Nice. Now let's create one of those things then.
 
-```elm
+{%highlight elm%}
 initShip : Ship   -- this is the type annotation
 initShip =
   { position = 0      -- the type is Float
   , velocity = 0      -- Float
   , shooting = False  -- Bool
   }
-```
+{%endhighlight%}
 
 So we got to an interesting point already. Take another look at the definition above. Is it a simple statement? Is it a function definition? It doesn't matter! `initShip` can be thought of either as just the literal record defined, or a function that always returns that record. Because the function is pure, and the data structure is immutable, there is no way to distinguish between those. Wow, cool.
 
@@ -63,11 +63,11 @@ So we got to an interesting point already. Take another look at the definition a
 
 Alright, moving on to moving the ship! I remember from high school that _s = v*dt_, or moved distance is the velocity times timedifference. So that's how I want to update my ship. In Elm, that would be something like the following.
 
-```elm
+{%highlight elm%}
 applyPhysics : Float -> Ship -> Ship
 applyPhysics dt ship =
   { ship | position = ship.position + ship.velocity * dt }
-```
+{%endhighlight%}
 
 The type annotation says: given a `Float` and a `Ship`, I will return a `Ship`, but also: given a `Float`, I will return `Ship -> Ship`. For example, `(applyPhysics 16.7)` would actually return a working function to which we can pass a `Ship`, and get the physics-applied ship as the return value. This property is called [Currying](http://en.wikipedia.org/wiki/Currying) and all Elm functions automatically behave this way.
 
@@ -77,7 +77,7 @@ Now getting back to the actual subject, `applyPhysics` created a new record, usi
 
 Updating the other two properties of the ship can be done similarly:
 
-```elm
+{%highlight elm%}
 updateVelocity : Float -> Ship -> Ship
 updateVelocity newVelocity ship =
   { ship | velocity = newVelocity }
@@ -85,11 +85,11 @@ updateVelocity newVelocity ship =
 updateShooting : Bool -> Ship -> Ship
 updateShooting isShooting ship =
   { ship | shooting = isShooting }
-```
+{%endhighlight%}
 
 Putting it all together to get the current version of the ship, we could do something like this:
 
-```elm
+{%highlight elm%}
 -- represents pressing the arrow buttons
 -- x and y go from -1 to 1, and stay at 0 if nothing is pressed
 type alias Keys = { x : Int, y : Int }
@@ -99,7 +99,7 @@ update dt keys ship =
   let newVel      = toFloat keys.x  -- `let` defines local variables for `in`
       isShooting  = keys.y > 0
   in  updateVelocity newVel (updateShooting isShooting (applyPhysics dt ship))
-```
+{%endhighlight%}
 
 Now if I could just call `update` 30 times per second, giving it the time difference from last update, the keys pressed and the previous incarnation of `ship`, I'd have a nice little game model going on. Except of course I couldn't see anything since there is no render... but in principle.
 
@@ -124,43 +124,43 @@ This is the point where some mind-bending realizations need to happen. In the ob
 
 In the beginning there was `initShip` with its dull `0, 0, False` values. There were also functions that could transform a `Ship` into another `Ship`. In particular, there was the `update` function, which would take input and a ship to get an updated ship. I will repeat the function here, so you don't need to scroll.
 
-```elm
+{%highlight elm%}
 update : Float -> Keys -> Ship -> Ship
 update dt keys ship =
   let newVel      = toFloat keys.x
       isShooting  = keys.y > 0
   in  updateVelocity newVel (updateShooting isShooting (applyPhysics dt ship))
-```
+{%endhighlight%}
 
 So if `initShip` is the initial state of the model, I can go one step forward from that, at least. Elm programs define a `main` function, that gets run when the program starts, so let's try showing `initShip` first. I import the `Graphics.Element` package to use the `show` function.
 
-```elm
+{%highlight elm%}
 import Graphics.Element exposing (..)
 
 -- (other code)
 main : Element
 main = show initShip
-```
+{%endhighlight%}
 
 This gives us
 
-```
+{%highlight elm%}
 { position = 0, shooting = False, velocity = 0 }
-```
+{%endhighlight%}
 
 Now if I want to go forward one step, I can apply the `update` function once before showing the ship. Let's try that then. I set the `keys` so that left and up are being pressed to see some effects (`x` is -1 and `y` is 1).
 
-```elm
+{%highlight elm%}
 dt = 100
 keys = { x = -1, y = 1 }
 main = show (update dt keys initShip)
-```
+{%endhighlight%}
 
 This gives us
 
-```
+{%highlight elm%}
 { position = 0, shooting = True, velocity = -1 }
-```
+{%endhighlight%}
 
 All right! So this works! My ship is `shooting` because the up button is pressed, and it has a negative `velocity` to account for the left button being pressed. Notice how the `position` stayed the same, still. This is because I defined the update sequence to first apply physics and then update the other properties. `initShip`'s velocity was 0, so applying physics didn't move it.
 
@@ -183,7 +183,7 @@ Okay, in order to get an interesting input signal, I will have to combine these 
 
 In code, this should look something like the following.
 
-```elm
+{%highlight elm%}
 import Time exposing (..)
 import Keyboard
 
@@ -195,12 +195,14 @@ inputSignal =
       tuples = Signal.map2 (,) delta Keyboard.arrows
   -- and update `inputSignal` whenever `delta` changes
   in  Signal.sampleOn delta tuples
-```
+{%endhighlight%}
 
 Cool, now all I need to do is wire up my `main` so that the input is actually used with the `update` function. For this, I need `Signal.foldp`, or "fold from the past". This is analogous to having a simpler fold like:
-```elm
+
+{%highlight elm%}
 summed = List.foldl (+) 0 [1,2,3,4,5]
-```
+{%endhighlight%}
+
 Here we start with 0, then sum that up with 1, then sum that up with 2 and so on, until all the numbers are summed up, and we arrive at the return value of 15.
 
 So in short, this should make a lot of sense. `foldp` looks at the value at the "start of time" and folds the whole past of the signal to finally arrive at the present moment -- the entire past of the program reduced to the present state.
@@ -208,10 +210,10 @@ Mind.. Blown. Well, for me at least.
 
 Anyway, let's see how that works in code. Now since I will have the `main` function update its results, it should also reflect that in its type, so I'll make it a `Signal Element` instead of just `Element` like before.
 
-```elm
+{%highlight elm%}
 main : Signal Element
 main = Signal.map show (Signal.foldp update initShip inputSignal)
-```
+{%endhighlight%}
 
 A couple of things are happening there:
 
@@ -233,15 +235,15 @@ Only this results in a crapton of type errors, the bottom-most of which is the f
 
 Uhh... Well, at least I know where to look for. My function's type signature looks like this: `update : Float -> Keys -> Ship -> Ship`. However, what I'm passing to it is actually `(Float, Keys)` and `Ship`. So yeah, I'll just change my function signature a little...
 
-```elm
+{%highlight elm%}
 update : (Float, Keys) -> Ship -> Ship
 update (dt, keys) ship =
   -- the same as before
-```
+{%endhighlight%}
 
 ... and it works! 🎉
 
-I now have a fully functional model, updates and everything, for my game, in a total of 50 lines of code! The whole thing can be seen here: [game.elm](#file-game-elm). To see it in action, you can copy-paste the code into the [Try Elm](http://elm-lang.org/try) interactive editor (in case nothing happens, click Compile and then the right-hand side of the screen, then press the arrow buttons).
+I now have a fully functional model, updates and everything, for my game, in a total of 50 lines of code! The whole thing can be seen here: [game.elm](#gameelm). To see it in action, you can copy-paste the code into the [Try Elm](http://elm-lang.org/try) interactive editor (in case nothing happens, click Compile and then the right-hand side of the screen, then press the arrow buttons).
 
 
 Again, a quick recap of what happened here:
@@ -279,3 +281,59 @@ One last thing: _if you liked this article, please consider sharing it with your
 **Functional programming** refers to the paradigm where the program is mainly expressed as pure functions.
 
 **Reactive programming** about having something that a component can start listening for, and react to the events as it pleases. In Elm, these listenable things are signals. The component using a signal knows how to utilize it, but the signal has no knowledge of the component(s) that it is affecting.
+
+
+## game.elm
+
+{%highlight elm%}
+import Graphics.Element exposing (..)
+import Time exposing (..)
+import Keyboard
+
+-- MODEL
+type alias Ship =
+  { position : Float  -- just 1 degree of freedom (left-right)
+  , velocity : Float  -- either 0, 1 or -1
+  , shooting : Bool
+  }
+
+initShip : Ship
+initShip =
+  { position = 0
+  , velocity = 0
+  , shooting = False
+  }
+
+type alias Keys = { x : Int, y : Int }
+
+
+-- UPDATE
+applyPhysics : Float -> Ship -> Ship
+applyPhysics dt ship =
+  { ship | position = ship.position + ship.velocity * dt }
+
+updateVelocity : Float -> Ship -> Ship
+updateVelocity newVelocity ship =
+  { ship | velocity = newVelocity }
+
+updateShooting : Bool -> Ship -> Ship
+updateShooting isShooting ship =
+  { ship | shooting = isShooting }
+
+update : (Float, Keys) -> Ship -> Ship
+update (dt, keys) ship =
+  let newVel      = toFloat keys.x
+      isShooting  = keys.y > 0
+  in  updateVelocity newVel (updateShooting isShooting (applyPhysics dt ship))
+
+
+-- SIGNALS
+inputSignal : Signal (Float, Keys)
+inputSignal =
+  let delta = fps 30
+      tuples = Signal.map2 (,) delta Keyboard.arrows
+  in  Signal.sampleOn delta tuples
+
+main : Signal Element
+main = Signal.map show (Signal.foldp update initShip inputSignal)
+{%endhighlight%}
