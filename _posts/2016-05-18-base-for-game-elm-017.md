@@ -20,6 +20,7 @@ Since then, I have used Elm in two separate customer projects, and it has defini
 
 The recent update (0.17) meant a [rather large shift](http://elm-lang.org/blog/farewell-to-frp) in the way the language works, so I decided to revisit the original subject. So here it is: the base for a Space Invaders game in Elm 0.17!
 
+You can find all of the code on [GitHub](https://github.com/ohanhi/elm-game-base), along with some setup instructions, but it is also listed at the bottom of this article.
 
 ## Elm, what was it again?
 
