@@ -171,7 +171,7 @@ Let's begin from the high level. The `update` function takes the incoming messag
 {% highlight elm %}
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of =
+    case msg of
         TimeUpdate dt ->
             ( applyPhysics dt model, Cmd.none )
 
