@@ -56,7 +56,7 @@ reasons:
 - JavaScript projects use a combination of e.g. React, Redux, redux-loop, etc.
 - They might even be using TypeScript or Flow, which are languages with great improvements over plain JS
     - But they build on top of JS, and as said, basically no one knows even all of JavaScript
-- There is very likely no other Futurice project with the exact same libraries and/or code style
+- There is very likely no other project with the exact same libraries and/or code style
     - New dev in a JS project needs at least a week or two to learn the project
 - Elm is a small language
     - It takes a couple of weeks to be productive
