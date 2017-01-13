@@ -1,21 +1,18 @@
 ---
 layout: post
 title: The Why and When of Choosing Elm - the Visual Edition
-reasons:
-  - gain a quick understanding of where Elm fits the picture well and where it poses challenges
 ---
 
 _For a textual version of this content, [see here](why-and-when-of-choosing-elm.html)._
 
-This is a quick overview of why and when you should consider choosing Elm over JavaScript.
-
-Each picture has an expandable text section if you'd like some explanation for the graphics.
-
 
 ![](img/why-when-elm/why-01.jpg)
 
+Each picture has an expandable text section if you'd like some explanation for the graphics.
+
 <details>
-  <summary>Click on this to try expanding...</summary><p>Yay, you expanded this!</p>
+<summary>Click on this to try expanding...</summary>
+<p>This is a quick overview of why and when you should consider choosing Elm over JavaScript.</p>
 </details>
 
 
