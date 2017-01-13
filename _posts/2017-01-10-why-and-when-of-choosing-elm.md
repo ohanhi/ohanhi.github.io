@@ -5,6 +5,8 @@ reasons:
   - gain a quick understanding of where Elm fits the picture well and where it poses challenges
 ---
 
+_For a visual version of this content, [see here](why-and-when-of-choosing-elm-visual.html)._
+
 ## What is Elm?
 
 - Language (and "framework") for building web frontend applications
