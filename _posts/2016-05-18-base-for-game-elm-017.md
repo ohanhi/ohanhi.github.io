@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 'Revisiting the "hard way": Base for a game in Elm 0.17'
-prereqs:
+i_expect_you_to_know:
   - some programming
-reasons:
+read_this_to:
   - learn the basics of Elm
   - get acquainted with subscriptions
 ---

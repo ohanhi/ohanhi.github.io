@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Master Elm pt. 1 - Why Elm"
-prereqs:
+i_expect_you_to_know:
   - some JavaScript
-reasons:
+read_this_to:
   - know what "Elm" is in layman's terms
   - understand what _confidence_ in programming means
   - get a feel of how Elm makes you confident

@@ -28,23 +28,23 @@
     </header>
     <p class="post-date">{{ page.date | date: "%B %-d, %Y" }}</p>
 
-    {% if page.reasons or page.prereqs %}
+    {% if page.read_this_to or page.i_expect_you_to_know %}
     <hr>
     {% endif %}
 
-    {% if page.reasons %}
+    {% if page.read_this_to %}
     <strong>Read this to</strong>
     <ul class="post-reasons">
-      {% for reason in page.reasons %}
+      {% for reason in page.read_this_to %}
       <li>{{ reason | markdownify }}</li>
       {% endfor %}
     </ul>
     {% endif %}
 
-    {% if page.prereqs %}
+    {% if page.i_expect_you_to_know %}
     <strong>I expect you to know</strong>
     <ul class="post-prereqs">
-      {% for req in page.prereqs %}
+      {% for req in page.i_expect_you_to_know %}
       <li>{{ req | markdownify }}</li>
       {% endfor %}
     </ul>
