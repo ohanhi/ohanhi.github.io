@@ -102,7 +102,10 @@ I hope this helps you think about Decoders in the future!
 
 ---
 
-**PS.** You may have noticed the order of things in Decoders matter.
+**PS.** The source code for the draggy-droppy thingie is [open source on GitHub](https://github.com/ohanhi/secret-message).
+
+
+**PPS.** You may have noticed the order of things in Decoders matter.
 
 This is why:
 
